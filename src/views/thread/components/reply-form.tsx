@@ -62,6 +62,7 @@ export default function ReplyForm({ item, onCancel, onSubmitted, replyKind = kin
     });
 
     const pub = await publish("Reply", draft);
+    await publish("Broadcast", item.event);
 
     if (pub && onSubmitted) onSubmitted(pub.event);
     clearCache();

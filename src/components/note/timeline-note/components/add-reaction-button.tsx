@@ -23,6 +23,7 @@ export default function AddReactionButton({
     } catch (error) {
       if (error instanceof Error) toast({ description: error.message, status: "error" });
     }
+    await publish("Broadcast", event);
     setLoading(false);
   };
   return <SelectReactionButton onSelect={addReaction} isLoading={loading} portal />;
